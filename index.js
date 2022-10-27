@@ -1,8 +1,15 @@
-const http = require('http')
+const express = require('express')
+const helmet = require('helmet')
+const compression = require("compression")
 
+
+const app = express()
 
 const PORT = 4600
-const HOST_NAME = "localhost"
+
+app.use(helmet())
+app.use(compression())
+
 
 const user = {
   slackUsername: "mondiafere",
@@ -12,29 +19,9 @@ const user = {
 
 }
 
-const requestHandler = (req, res) => {
-
-  res.setHeader("Content-Type", "application/json");
-
-
-  switch (req.url) {
-    case '/':
-      res.writeHead(200)
-      res.end(JSON.stringify(user))
-      break;
-    default:
-      res.writeHead(404)
-      res.end(JSON.stringify({
-        msg: "Not Found."
-      }))
-  }
-
-}
-
-
-
-const server = http.createServer(requestHandler)
-
-server.listen(PORT, HOST_NAME, () => {
-  console.log('server running')
+app.get('/', (req, res) => {
+  res.status(200).json(user)
 })
+
+
+app.listen(PORT, () => console.log(`running on ${PORT}`))
