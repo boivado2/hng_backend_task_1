@@ -18,7 +18,7 @@ const requestHandler = (req, res) => {
 
 
   switch (req.url) {
-    case '/user':
+    case '/':
       res.writeHead(200)
       res.end(JSON.stringify(user))
       break;
