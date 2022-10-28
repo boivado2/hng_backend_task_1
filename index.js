@@ -8,9 +8,10 @@ const app = express()
 
 const PORT = 4600
 
-app.use(cors())
 app.use(helmet())
 app.use(compression())
+app.use(cors())
+
 
 
 const user = {
