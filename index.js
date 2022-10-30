@@ -15,12 +15,14 @@ app.use(cors())
 
 
 const user = {
-  slackUsername: "mondiafere",
+  slackUsername: "boivado2",
   age: 21,
   backend: true,
   bio: "Hello! my name is John Ayebamondiafere Godwin, i'm a Backend Engineer."
 
 }
+
+
 
 
 
