@@ -13,6 +13,11 @@ app.use(compression())
 app.use(cors())
 
 
+app.use(function (err, req, res, next) {
+  console.log(err)
+  res.status(err.status || 500).json({msg : err.message})
+})
+
 
 const user = {
   slackUsername: "boivado2",
